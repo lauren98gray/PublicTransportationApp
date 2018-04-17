@@ -85,4 +85,16 @@ public class HovLane {
         }
         return result;
     }
+
+    public int colorCount(String color) {
+        int count = 0;
+        HovLane temp = this;
+        while (temp.next != null){
+            if (temp.head.getColor().equals(color)){
+                count++;
+            }
+            temp = temp.next;
+        }
+        return count;
+    }
 }
