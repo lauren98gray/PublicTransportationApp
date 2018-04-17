@@ -4,12 +4,12 @@ public class HovLane {
     private Car head;
     private HovLane next;
 
-    public HovLane(Car car) {
+    private HovLane(Car car) {
         head = car;
         next = null;
     }
 
-    public HovLane() {
+    private HovLane() {
         head = new Car();
         next = null;
     }
@@ -17,18 +17,31 @@ public class HovLane {
     public HovLane(int size){
         head = new Car();
         next = new HovLane();
-        for (int i = 0; i < size - 2; i++) {
-            next = next.prepend(new Car());//new HovLane(new Car());
+        for (int i = 0; i < size - 1; i++) {
+            next = next.prepend(new Car());
         }
     }
 
-    public HovLane createHOVspecificSize(int size){
-        HovLane result = new HovLane();
-        for (int i = 0; i < size - 1; i++) {
-            result = result.prepend(new Car());
+    @Override
+    public boolean equals(Object obj) {
+        HovLane lane = (HovLane) obj;
+        if (this.head.equals(lane.head) &&
+            this.next.equals(lane.next)){
+            return true;
         }
-        return result;
+        return false;
     }
+
+    public int size() {
+        int count = 0;
+        HovLane temp = this;
+        while (temp.next != null){
+            count++;
+            temp = temp.next;
+        }
+        return count;
+    }
+
 
     public HovLane prepend(Car car){
         HovLane temp = new HovLane(car);
@@ -39,7 +52,7 @@ public class HovLane {
 
     @Override
     public String toString() {
-        return head + " -> " + next;
+        return "head:" + head + " -> next:" + next;
     }
 
     public Car getCar() {
@@ -57,4 +70,6 @@ public class HovLane {
     public void setNext(HovLane next) {
         this.next = next;
     }
+
+
 }
