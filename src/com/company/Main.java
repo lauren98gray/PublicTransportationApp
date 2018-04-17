@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -13,7 +15,9 @@ public class Main {
         int size = length10.size();
         System.out.println("\nThere are " + size + " cars in the HOV Lane.");
 
-        //TODO What are the ID(s) of cars with only one occupant?
+        //What are the ID(s) of cars with only one occupant?
+        ArrayList<Integer> oneOccupantIDs = length10.oneOccupantIDs();
+        System.out.println("\nThe ID(s) of the cars with only one occupant are: " + oneOccupantIDs);
 
 
 
