@@ -4,8 +4,7 @@ import java.util.ArrayList;
 
 public class HovLane {
     private Car head;
-    private HovLane next;
-    public int maxCars = 10;
+    private HovLane next = null;
 
     private HovLane(Car car) {
         head = car;
@@ -19,9 +18,8 @@ public class HovLane {
 
     public HovLane(int size){
         head = new Car();
-        next = new HovLane();
-        for (int i = 0; i < size - 1; i++) {
-            next = next.prepend(new Car());
+        if (size > 1){
+            next = new HovLane(size -1);
         }
     }
 
@@ -36,7 +34,7 @@ public class HovLane {
     }
 
     public int size() {
-        int count = 0;
+        int count = 1;
         HovLane temp = this;
         while (temp.next != null){
             count++;
@@ -47,13 +45,9 @@ public class HovLane {
 
 
     public HovLane prepend(Car car){
-        if (this.size() < maxCars) {
             HovLane temp = new HovLane(car);
             temp.next = this;
             return temp;
-        }
-        HovLane newLane = new HovLane(car);
-        return newLane;
     }
 
 
@@ -101,5 +95,16 @@ public class HovLane {
             temp = temp.next;
         }
         return count;
+    }
+
+    public HovLane split(int maxSize) {
+        HovLane temp = this;
+        while (maxSize > 1){
+            temp = temp.next;
+            maxSize--;
+        }
+        HovLane hov2 = temp.next;
+        temp.next = null;
+        return hov2;
     }
 }

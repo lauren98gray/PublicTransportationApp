@@ -28,10 +28,20 @@ public class Main {
         //MILESTONE 2
 
         //Every time the HOV lane has [N] or more cars, open a second one
+        HovLane hov2 = lane.split(5);
+        System.out.println("\nhov 1: " + lane);
+        System.out.println("\nhov 2: " + hov2);
 
         //What was the most number of cars in HOV [H]?
         int maxNumCars = lane.size();
-        System.out.println("\nThe most number of cars in HOV [H] is " + maxNumCars);
+        System.out.println("\nThe most number of cars in HOV 1 is " + maxNumCars + ".");
+        System.out.println("The most number of cars in HOV 2 is " + hov2.size() + ".");
+
+        //Was it ever true that HOV1 and HOV2 both had [N] cars?
+        /*HovLane newLane = lane.prepend(new Car());
+        System.out.println("\n" + newLane);
+        newLane = newLane.prepend(new Car());
+        System.out.println("\n" + newLane);*/
 
 
 
