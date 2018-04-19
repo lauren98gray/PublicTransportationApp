@@ -29,6 +29,10 @@ public class Main {
 
         //Every time the HOV lane has [N] or more cars, open a second one
 
+        //What was the most number of cars in HOV [H]?
+        int maxNumCars = lane.size();
+        System.out.println("\nThe most number of cars in HOV [H] is " + maxNumCars);
+
 
 
 
