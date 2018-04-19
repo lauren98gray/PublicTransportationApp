@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class HovLane {
     private Car head;
     private HovLane next;
+    public int maxCars = 10;
 
     private HovLane(Car car) {
         head = car;
@@ -46,9 +47,13 @@ public class HovLane {
 
 
     public HovLane prepend(Car car){
-        HovLane temp = new HovLane(car);
-        temp.next = this;
-        return temp;
+        if (this.size() < maxCars) {
+            HovLane temp = new HovLane(car);
+            temp.next = this;
+            return temp;
+        }
+        HovLane newLane = new HovLane(car);
+        return newLane;
     }
 
 
@@ -74,11 +79,11 @@ public class HovLane {
     }
 
 
-    public ArrayList<Integer> oneOccupantIDs() {
+    public ArrayList<Integer> numOccupantIDs(int numOccupants) {
         HovLane temp = this;
         ArrayList<Integer> result = new ArrayList<>();
         while (temp.next != null){
-            if (temp.head.getOccupancy() == 1){
+            if (temp.head.getOccupancy() == numOccupants){
                 result.add(temp.head.getId());
             }
             temp = temp.next;
