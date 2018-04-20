@@ -107,4 +107,11 @@ public class HovLane {
         temp.next = null;
         return hov2;
     }
+
+    public boolean isAtMaximum(int max){
+        if (this.size() == max){
+            return true;
+        }
+        return false;
+    }
 }
